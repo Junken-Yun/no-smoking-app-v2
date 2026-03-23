@@ -1,0 +1,39 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>티끌모아금연</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>금연 카운트</h2>
+      <p id="count">0</p>
+    </div>
+
+    <div class="card">
+      <h2>절약 금액</h2>
+      <p id="money">0</p>
+    </div>
+
+    <div class="card">
+      <h2>오늘 횟수</h2>
+      <p id="today">0</p>
+    </div>
+
+    <div class="card">
+      <h2>최근 7일 그래프</h2>
+      <canvas id="chart"></canvas>
+    </div>
+
+    <button id="btn">참기 성공</button>
+    <button id="reset">초기화</button>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
