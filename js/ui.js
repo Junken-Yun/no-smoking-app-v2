@@ -1,15 +1,29 @@
-import { data } from "./state.js";
+// js/ui.js
+import { getLast7Days } from "./stats.js";
 
-export function updateUI(){
-    let total = Object.values(data.history).reduce((a,b)=>a+b,0);
-    let today = data.history[new Date().toISOString().slice(0,10)] || 0;
+let chart;
 
-    document.getElementById("total").innerText=total;
-    document.getElementById("today").innerText=today;
-    document.getElementById("money").innerText=(total*data.unitMoney).toLocaleString();
-    document.getElementById("goal").innerText=data.goal;
+export function updateUI(data) {
+  document.getElementById("count").innerText = data.count;
+  document.getElementById("money").innerText = data.money.toLocaleString();
+  document.getElementById("today").innerText = data.todayCount;
 
-    let percent = Math.min((today/data.goal)*100,100);
-    document.getElementById("progress-fill").style.width=percent+"%";
-    document.getElementById("progress-text").innerText=`${today}/${data.goal}`;
+  const last7 = getLast7Days(data.history);
+  const labels = last7.map(item => item[0]);
+  const values = last7.map(item => item[1]);
+
+  const ctx = document.getElementById("chart");
+
+  if (chart) chart.destroy();
+
+  chart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "금연 횟수",
+        data: values
+      }]
+    }
+  });
 }
