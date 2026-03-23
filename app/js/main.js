@@ -5,14 +5,10 @@ import { updateUI } from "./ui.js";
 
 let data = await loadData();
 
+import { createDefaultData } from "./data/default.js";
+
 if (!data) {
-  data = {
-    count: 0,
-    todayCount: 0,
-    money: 0,
-    history: [],
-    lastDate: null
-  };
+  data = createDefaultData();
 }
 
 updateUI(data);
