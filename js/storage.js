@@ -1,6 +1,6 @@
-// js/storage.js (Firebase 기반으로 변경)
+// js/storage.js
 import { db } from "./firebase.js";
-import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
 const USER_ID = "defaultUser";
 
